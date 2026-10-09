@@ -3,11 +3,12 @@ services:
     name: job-board-ats-demo
     runtime: python
     rootDir: .
+    pythonVersion: "3.11.0"
     buildCommand: "pip install -r requirements.txt && python manage.py collectstatic --no-input && python manage.py migrate && python create_superuser.py"
     startCommand: "gunicorn job_board.wsgi:application"
     envVars:
       - key: PYTHON_VERSION
-        value: 3.11.0
+        value: "3.11.0"
       - key: WEB_CONCURRENCY
         value: 2
       - key: RENDER
